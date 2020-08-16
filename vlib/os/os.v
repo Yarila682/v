@@ -87,7 +87,7 @@ pub fn cp(old, new string) ? {
 		fp_to := C.open(charptr(new.str), C.O_WRONLY | C.O_CREAT | C.O_TRUNC, C.S_IWUSR | C.S_IRUSR)
 		if fp_to < 0 { // Check if file opened (permissions problems ...)
 			C.close(fp_from)
-			return error_with_code('cp (permission): failed to write to $new (fp_to:$fp_to)', int(fp_to))
+			return error_with_code('cp (permission): failed to write to $new (fp_to: $fp_to)', int(fp_to))
 		}
 		mut buf := [1024]byte
 		mut count := 0
